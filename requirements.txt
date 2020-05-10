@@ -2,7 +2,6 @@ glob2==0.7
 pickleshare==0.7.5
 networkx==2.4
 nltk==3.4.5
-pathlib==1.0.1
 pathlib2==2.3.5
 joblib==0.14.1
 pandas==1.0.3
