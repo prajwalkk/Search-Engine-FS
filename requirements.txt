@@ -41,6 +41,7 @@ dill==0.2.9
 Django==3.0.5
 djangorestframework==3.11.0
 docutils==0.16
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.5/en_core_web_sm-2.2.5.tar.gz#egg=en_core_web_sm
 entrypoints==0.3
 et-xmlfile==1.0.1
 filelock==3.0.12
