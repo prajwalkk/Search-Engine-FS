@@ -1,0 +1,15 @@
+.sidebar {
+  height: auto;
+  position: fixed;
+  top: 4rem;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  position: -webkit-sticky;
+  position: sticky;
+}

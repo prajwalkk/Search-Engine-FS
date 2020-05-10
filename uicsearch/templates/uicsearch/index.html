@@ -1,0 +1,27 @@
+{% extends 'uicsearch/base_generic.html' %}
+{% block content %}
+
+{% for pagelink, content, cossim, pagerank in data %}
+<div class="media text-muted pt-3">
+    <div class="container-md">
+        <p class="media-body pb-3 mb-0 small lh-125 border-gray" href='{{ pagelink }}'>
+            <strong class="d-block text-gray-dark">{{  content|truncatewords:30 }}</strong>
+            <a href="{{ pagelink }}">{{ pagelink|truncatechars:40 }}</a>
+        </p>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
+
+{% block sidebar %}
+<div class='sidebar position-sticky'>
+    <div class="list-group list-group-flush">
+        {% for query in expanded_queries %}
+        <a class="list-group-item list-group-item-action bg-light"
+            href="/search/?eval_func={{form.eval_func.value|default_if_none:'2'}}&result_size={{form.result_size.value|default_if_none:'10'}}&query={{query.split|join:'+'}}">
+            {{ query }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock sidebar %}

@@ -1,0 +1,58 @@
+{% extends 'uicsearch/base_generic.html' %}
+{% block content %}
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Page</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pagerank in pageranks %}
+        <tr>
+            <td class="d-inline-block text-truncate">{{ pagerank.0 }}</td>
+            <td>{{ pagerank.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    {% if pageranks.has_other_pages %}
+    <ul class="pagination justify-content-center">
+        {% if pageranks.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ pageranks.previous_page_number }}">Previous</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+        </li>
+        {% endif %}
+        {% for i in pageranks.paginator.page_range %}
+        {% if pageranks.number == i %}
+        <li class="page-item active">
+            <span class="page-link">{{ i }}
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        {% else %}
+        <li>
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if pageranks.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ pageranks.next_page_number }}">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link">Next</span>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+https://ethos.lab.uic.edu/background/binary-install-into-virtualbox
+Binary install into VirtualBox | Ethos Laboratory | University of Illinois at Chicago                        Skip to the content of this page ,  the main menu , the secondary menu , the site search form , the site home page .        UIC Logo        Ethos Laboratory     Search the site     Toggle Menu      Search                  UIC Logo          Ethos Laboratory      Ethos Laboratory   Main Menu    People    Projects    Papers    About Us    Expand About Us menu           Getting Started    Paper Reading Seminar    Binary install into VirtualBox    The Advanced Programming Seminar Series          Eyebrow menu    Computer Science    College of Engineering    UIC menu    UIC.edu    Campus Map       Search                 View Menu  Down arrow icon            Breadcrumbs   Ethos Laboratory    About Us    Binary install into VirtualBox        Binary install into VirtualBox       Steps:    Download the binary image:  Download (1.5GB) Ethos image here  Download Checksum sha256  Check integrity with sha256sum -c Fedora24-ethos-binaries-2017-10-25.ova.sha256    Import the binary image to your VirtualBox.  On the Ethos VM  Login to Ethos VM using the following credentials: username: ethos
+    password: ethos   Setup the network connectivity with your VM.  You can find the guest IP for port forwarding by running ifconfig on your Ethos VM.  Set up port forwarding to your VM.  After this you should be able to login to ethos VM from your host machine using ssh -p port ethos@127.0.0.1  where port is the port number used.  Once logged in, follow the steps given in developer’s manual to initialize and run an ethos instance. A summary of steps is given below:    You should have gotten your SSH public key setup for the ethos git server by now,  copy the same public-key pair over to this VM and create a config file in ~/.ssh/ directory and specify the same username in it  Make sure you change the permissions of ~/.ssh/config file to 600 level.  Clone and build ethos # get ethos
+	git clone git.ethos-os.org:/home/git/ethos
+	cd ethos && bin/gt pullall
+
+	# checkout to workingMaster branch.
+	bin/gt checkout workingMaster
+
+	# build ethos
+	make
+
+	#  completely remove the previous ethos binaries on your VM.
+	sudo -E make uninstall && sudo rm -rf /tmp/ethos
+        # Kill the cryptoService using
+	sudo killall -9 cryptoService
+	# to install the freshly compiled ethos binaries.
+	sudo -E make install   Run ethos  In one terminal, run cd ~
+sudo rm -rf server
+ethosParams server
+cd server
+ethosBuilder && minimaltdBuilder
+sudo ethosRun   In second terminal, run cd ~/server && sudo minimaltdRun   In third terminal, run cd ~/server && sudo et server.ethos     Run ethosLog . in the directory of your instance to get and share the running logs.        Note:   NOTE: It is highly recommended for beginners to read Developers Manual and GoOnEthos Manual. Public information about the project consists of these these web pages and papers published in conferences. We are still publishing our results. Since we spent all this time building Ethos, we would like to be the first to measure it and write about it.          About Us    Back to main content           Getting Started    Paper Reading Seminar    Binary install into VirtualBox    The Advanced Programming Seminar Series                   UIC Logo         Computer  Science  College Of  Engineering         Contact         Social Media Accounts            UIC.edu links   UIC.edu  Academic Calendar  Athletics  Campus Directory  Disability Resources  Emergency Information  Event Calendar  Job Openings  Library  Maps  UIC Safe Mobile App  UIC Today  UI Health  Veterans Affairs        Powered by Red 2.38.0  © 2020 The Board of Trustees of the University of Illinois |  Privacy Statement    Campuses   University of Illinois System  Urbana-Champaign  Springfield      Cookie Settings                 
