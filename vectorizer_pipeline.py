@@ -37,6 +37,7 @@ def tokenize(doc):
 data_array = []
 currpath = Path(__file__).parent
 files = glob.glob("./Datafiles/CrawledData/20200510/*")
+print(len(files))
 for file in files:
     with open(file, 'r', encoding='utf-8', errors='ignore') as f:
         data_array.append([re.sub('./Datafiles/CrawledData/20200510/', '', file),
