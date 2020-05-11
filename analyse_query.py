@@ -17,14 +17,27 @@ currpath = Path(__file__).parent
 
 RESULT_LIMIT = 10
 QUERY_EXPN_LIMIT = 20
-vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
-tfidfs = joblib.load(currpath / 'DataFiles/tfidf.joblib')
-df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+vectorizer = None
+tfidfs = None
+df = None
+page_rank = None
+init_val = 0
 
-page_rank = pickle.load(open(currpath / 'DataFiles/page_rank.pkl', 'rb'))
+def initialize_objects():
+    global vectorizer,tfidfs ,df ,page_rank ,init_val 
+    vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
+    tfidfs = joblib.load(currpath / 'DataFiles/tfidf.joblib')
+    df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+    page_rank = pickle.load(open(currpath / 'DataFiles/page_rank.pkl', 'rb'))
+    init_val = 1
+
+
 
 
 def analyse_query(query, n=10, page_rank_flag=False):
+    if(init_val == 0):
+        return ["None"] * 5
+    
     RESULT_LIMIT = int(n)
     print(query)
     q_tfidf = vectorizer.transform([query])

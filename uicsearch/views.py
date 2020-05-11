@@ -3,13 +3,19 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from uicsearch.forms import SearchForm
-from analyse_query import analyse_query
+from analyse_query import analyse_query, initialize_objects
 from PageRanker import page_rank
 
 # Create your views here.
 
 
 class HomeView(TemplateView):
+
+    def background_process():
+        print('initializing')
+        initialize_objects()
+        print("done")
+
 
     def get(self, request):
         print("GET")
@@ -18,6 +24,10 @@ class HomeView(TemplateView):
         pagerank_flag = True if int(
             request.GET.get('eval_func', '0')) == 1 else False
         if '' in (query, option, pagerank_flag):
+            import threading
+            t = threading.Thread(target=background_process, args=(), kwargs={})
+            t.setDaemon(True)
+            t.start()
             form = SearchForm()
             print("Def Page")
             return render(request=request,
