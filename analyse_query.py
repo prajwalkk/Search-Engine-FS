@@ -9,10 +9,16 @@ from pathlib import Path
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
-from vectorizer_pipeline import tokenize
-nltk.download('popular', quiet=True)
+# from vectorizer_pipeline import tokenize
+# nltk.download('popular', quiet=True)
 spacy_nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
+
+def tokenize(doc):
+    doc_1 = spacy_nlp(doc)
+    no_stop_doc = [
+        token.lemma_ for token in doc_1 if not token.is_stop and not token.is_punct]
+    return no_stop_doc
 currpath = Path(__file__).parent
 
 RESULT_LIMIT = 10
