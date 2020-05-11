@@ -36,11 +36,11 @@ def tokenize(doc):
 
 data_array = []
 currpath = Path(__file__).parent
-files = glob.glob("./Datafiles/CrawledData/20200510/*")
+files = glob.glob("./DataFiles/CrawledData/20200510/*")
 print(len(files))
 for file in files:
     with open(file, 'r', encoding='utf-8', errors='ignore') as f:
-        data_array.append([re.sub('./Datafiles/CrawledData/20200510/', '', file),
+        data_array.append([re.sub('./DataFiles/CrawledData/20200510/', '', file),
                            re.sub(' +', ' ', f.read())])
 
 df = pd.DataFrame(data_array, columns=['File', 'Contents'])

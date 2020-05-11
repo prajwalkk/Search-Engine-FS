@@ -11,7 +11,7 @@ def page_rank():
     currpath = Path(__file__).parent
 
     G = nx.read_gpickle(
-        currpath / "Datafiles/Links/20200510/final_graph.gpickle")
+        currpath / "DataFiles/Links/20200510/final_graph.gpickle")
 
     files = glob.glob(
         r"./DataFiles/CrawledData/20200510/*")
