@@ -11,7 +11,7 @@ from PageRanker import page_rank
 
 class HomeView(TemplateView):
 
-    def background_process():
+    def background_process(self):
         print('initializing')
         initialize_objects()
         print("done")
@@ -25,7 +25,7 @@ class HomeView(TemplateView):
             request.GET.get('eval_func', '0')) == 1 else False
         if '' in (query, option, pagerank_flag):
             import threading
-            t = threading.Thread(target=background_process, args=(), kwargs={})
+            t = threading.Thread(target=initialize_objects, args=(), kwargs={})
             t.setDaemon(True)
             t.start()
             form = SearchForm()

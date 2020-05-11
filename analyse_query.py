@@ -30,18 +30,26 @@ page_rank = None
 init_val = 0
 
 def initialize_objects():
+    print("Initializing")
     global vectorizer,tfidfs ,df ,page_rank ,init_val 
-    vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
-    tfidfs = joblib.load(currpath / 'DataFiles/tfidf.joblib')
-    df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
-    page_rank = pickle.load(open(currpath / 'DataFiles/page_rank.pkl', 'rb'))
-    init_val = 1
+    if init_val == 0:
+        print("Initializing as val = 0")
+        vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
+        print("Initialized vectorizer")
+        tfidfs = joblib.load(currpath / 'DataFiles/tfidf.joblib')
+        print("Initialized tfidf")
+        df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+        print("Initialized content")
+        page_rank = pickle.load(open(currpath / 'DataFiles/page_rank.pkl', 'rb'))
+        print("Initialized page rank")
+        init_val = 1
+    print("Initialized")
 
 
 
 
 def analyse_query(query, n=10, page_rank_flag=False):
-    if(init_val == 0):
+    if init_val == 0:
         return ["None"] * 5
     
     RESULT_LIMIT = int(n)
