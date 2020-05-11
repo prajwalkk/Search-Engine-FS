@@ -38,25 +38,28 @@ def initialize_objects():
 
 
 
-
 def analyse_query(query, n=10, page_rank_flag=False):
     if init_val == 0:
         return ["None"] * 5
     
     RESULT_LIMIT = int(n)
     print(query)
+    list_q = tokenize(query)
     q_tfidf = vectorizer.transform([query])
     print(q_tfidf.shape, tfidfs.shape)
 
     dict_cossim = {}
+    
     for i in range(len(df)):
-        int_dict = {}
-        int_dict = {'Link': df.loc[i]['Link'],
-                    'Content': df.loc[i]['Doc'],
-                    'CosSim': cosine_similarity(tfidfs[i], q_tfidf),
-                    'PageRank': page_rank[df.loc[i]['Link']]
-                    }
-        dict_cossim[i] = int_dict
+        doc_string = df.loc[i]['Doc']
+        if any(ele in doc_string.lower() for ele in list_q):
+            int_dict = {}
+            int_dict = {'Link': df.loc[i]['Link'],
+                        'Content': doc_string,
+                        'CosSim': cosine_similarity(tfidfs[i], q_tfidf),
+                        'PageRank': page_rank[df.loc[i]['Link']]
+                        }
+            dict_cossim[i] = int_dict
     cosine_similarity(tfidfs[0], q_tfidf)
 
     top_n = sorted(dict_cossim.keys(),
