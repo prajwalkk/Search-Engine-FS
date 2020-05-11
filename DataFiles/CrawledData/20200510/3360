@@ -1,2 +1,40 @@
-https://compbio.cs.uic.edu/news.html
-UIC: Laboratory for Computational Population Biology        Laboratory for Computational Population Biology  Department of Computer Science  University of Illinois at Chicago (UIC)         Home  Projects  Publications  Software  People    News  Lab Meetings  Contact        News              Great Lakes Bioinformatics (GLBIO) 2017 : CompPopBio Lab Director Prof. Berger-Wolf will co-chair GLBIO 2017 conference with Prof. Tandy Warnow (UIUC) . GLBIO 2017 will have a new format, with a mixture of Special Sessions (organized by the scientific community) in addition to the regular track. The tentative deadline for proposing special sessions is October 1, 2016; please see the call for special sessions for more information. Computational Population Biology Lab                  © 2007 University of Illinois at Chicago . All rights reserved.  Design by NodeThirtyThree Design   
+https://compbio.cs.uic.edu/projects.html
+UIC: Laboratory for Computational Population Biology      Laboratory for Computational Population Biology  Department of Computer Science  University of Illinois at Chicago (UIC)         Home  Projects  Publications  Software  People     Contact   Facebook Page        Projects              Project list   Movement of Social Animals  Dynamic Network Analysis  Sibling Relationship Reconstruction  Automatic Individual Animal Identification from Photographs  Computational tools for camera trap analysis  Animal Wildlife EStimator using SOcial MEdia (AWESOME)         Movement of Social Animals  Animals spend their lives on the move, creating networks of global connectivity that shape and increasingly are being shaped by ecosystem health. From the local quest to find food, shelter and
+						mates, to the long-distance traverses of global migrations, movement provides a biological framework link- ing individual processes to population dynamics in organisms ranging from bacteria to
+						humans. Yet, animal movement remains a black box, limiting our ability to model and predict important processes, including potential impacts of human-induced rapid environmental change, spread of
+						diseases, and sustaining biodiversity. Resolving these questions is computationally challenging because of the complex interplay between individual, social and environmental processes. [ project page ]       Dynamic Network Analysis  Finding patterns of social interaction within a population has applications from epidemiology and marketing to 
+					conservation biology and behavioral ecology. An intrinsic characteristics of societies is their continual change. 
+					Yet, few analysis methods are explicitly dynamic. We are working on novel conceptual and computational frameworks 
+					to accurately describe the social context of an individual at time scales matching changes in individual and group activity.
+					Current projects in this direction include finding communities and critical individuals in dynamic networks, and 
+					fine-grained interaction prediction in dynamic networks.  [ wiki ]    Supported by:    NSF CAREER Award IIS-0747369 "Computational Tools for Population Biology"  NSF grant 0705822 "Computational Methods for Understanding Social Interactions in Animal Populations"        Microsoft            Sibling Relationship Reconstruction  Please see our Wiki Page for more information. Falcons and other birds of prey are extremely secretive about their lives. Sharks are hard to catch and study 
+					because they live in water. Cowbirds leave eggs in other birds' nests and let them raise the cowbird chicks.  
+					One of the things common to all these species is that it is difficult to study their mating system. It is even 
+					difficult to identify which animals or plants are siblings. Yet, this simple fact is necessary for conservation, 
+					animal management, and understanding of evolutionary mechanisms.  Our team has developed the first efficient computational method for reconstruction of sibling relationships from 
+					genetic data geared especially to wild populations. Now, given a genetic sample of the individuals from the same 
+					generation, we can identify full siblings without any information on the parents. Unlike other methods, ours does 
+					not assume anything about the data beyond the simple Mendelian laws of inheritance and does not require any a priori 
+					knowledge about the population. Our method reconstructs known sibling groups exactly on data from such diverse 
+					species as cod, shrimp, flies, and radishes. Biologists now can use our method to find out more about mating systems 
+					by just taking a genetic sample from chicks in nests or	young shark in shallow waters.    Supported by:    NSF CAREER Award IIS-0747369 "Computational Tools for Population Biology"  NSF grant 0612044 "Computational Methods for Kinship 
+                                Reconstruction"            Automatic Individual Animal Identification from Photographs  In wild animal populations, collecting behavioral data about
+a species often entails identifying individual animals between sightings taken at different places and times. This
+ is a primitive operation in ecological analysis that underlies
+ broader aspects of animal behavior research. Electronic tracking devices embedded in animals are one ap
+ proach to identifying individual animals, but can be prohibitively expensive and difficult to design for field conditions, and involve considerable cost and risk for larger an
+ imals. Researchers are therefore left with no alternative other than to manually record data in the field us
+ ing, for example, genetic markers in excrement, capture
+ recapture techniques, or manual identification from photographs. Advances in hardware and the correspond
+ ing drop in prices of digital cameras have resulted in an
+ increase in the availability of digital photographs of wild
+ animal sightings at high resolutions and qualities, making
+ it an attractive candidate for fully-automatic or computer-assisted animal identification. In collaboration with the Princeton Equid research group , we have developed StripeSpotter , a program to perform automatic individual animal identification of zebras and other striped animals. It is an ongoing project, and has currently been deployed at various nature conservancies in Kenya.    Supported by:    NSF CAREER Award IIS-0747369 "Computational Tools for Population Biology"  NSF grant 0705822 "Computational Methods for Understanding Social Interactions in Animal Populations"        UIC Provost's Award (Mayank Lahiri)          Computational tools for camera trap analysis  This project will create computational methods to detect animals in camera trap images and to
+identify species of detected animals to support wildlife tracking for biology research. [ abstract ]       Animal Wildlife EStimator using SOcial MEdia (AWESOME)  AWESOME is a research project initiative to build a population estimator using pictures from social media. 
+						Tracking of wildlife population using conventional methods incurs a financial as well as an operational burden.
+						AWESOME tries to solve this problem by turning to a promising and opportunistic form of citizen science. 
+						We are trying to build a population estimator by mining images of animals from social media.
+						Estimating population from social media images is a non-trivial problem due to the inherent complexities introduced by biases in social media data. 
+						We attempt to quantify and understand the biases that influence the sharing behavior of human with respect to wildlife images.
+						The first step towards building such an estimator that accounts from such self-reporting bias is to build a classifier that can learn whether or not a picture of a certain wildlife species will be shared or not.
+						[ project page ]        © 2007 University of Illinois at Chicago . All rights reserved.  Design by NodeThirtyThree Design   

@@ -47,7 +47,7 @@ def analyse_query(query, n=10, page_rank_flag=False):
 
     top_n_page_rank = sorted(dict_cossim.keys(),
                              key=lambda x: (
-        (0.7 * dict_cossim[x]['CosSim'][0]) + (0.8 * dict_cossim[x]['PageRank'])),
+        ( dict_cossim[x]['CosSim'][0]) + (dict_cossim[x]['PageRank'])),
         reverse=True)[:RESULT_LIMIT]
 
     link_list = []
