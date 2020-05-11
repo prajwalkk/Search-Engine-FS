@@ -10,6 +10,10 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 import spacy
 from sklearn.metrics.pairwise import cosine_similarity
+try:
+    import cPickle as pickle
+except:
+    import pickle
 spacy_nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 
@@ -36,28 +40,41 @@ def tokenize(doc):
 
 data_array = []
 currpath = Path(__file__).parent
-files = glob.glob("./DataFiles/CrawledData/20200510/*")
-print(len(files))
-for file in files:
-    with open(file, 'r', encoding='utf-8', errors='ignore') as f:
-        data_array.append([re.sub('./DataFiles/CrawledData/20200510/', '', file),
-                           re.sub(' +', ' ', f.read())])
+if not Path(currpath / 'DataFiles/dataFrame_bk.pkl').exists():
+    print("File does not exist")
+    files = glob.glob("./DataFiles/CrawledData/20200510/*")
+    print(len(files))
+    for file in files:
+        with open(file, 'r', encoding='utf-8', errors='ignore') as f:
+            data_array.append([re.sub('./DataFiles/CrawledData/20200510/', '', file),
+                            re.sub(' +', ' ', f.read())])
+    df = pd.DataFrame(data_array, columns=['File', 'Contents'])
+    df = pd.DataFrame(data_array, columns=['File', 'Contents'])
+    df['Link'] = df['Contents'].apply(lambda x: x.split("\n")[0])
+    df['Doc'] = df['Contents'].apply(lambda x: x.split("\n")[1])
+    df.to_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+else:
+    print("File does exist")
+    df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
 
-df = pd.DataFrame(data_array, columns=['File', 'Contents'])
-df = pd.DataFrame(data_array, columns=['File', 'Contents'])
-df['Link'] = df['Contents'].apply(lambda x: x.split("\n")[0])
-df['Doc'] = df['Contents'].apply(lambda x: x.split("\n")[1])
 
-vectorizer = TfidfVectorizer(tokenizer=tokenize,
-                             strip_accents='ascii',
-                             ngram_range=(1, 3),
-                             token_pattern=r'\b[a-zA-Z]{3,}\b',
-                             max_features=160000,
-                             sublinear_tf=True)
+if not Path((currpath / 'DataFiles/vectorizer.joblib')):
+    print("vectorizing")
+    vectorizer = TfidfVectorizer(tokenizer=tokenize,
+                                strip_accents='ascii',
+                                ngram_range=(1, 3),
+                                token_pattern=r'\b[a-zA-Z]{3,}\b',
+                                max_features=160000,
+                                sublinear_tf=True)
+    joblib.dump(vectorizer, currpath / 'DataFiles/vectorizer.joblib')
+else:
+    print("vector File does exist")
+    vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
 
-tfidfs = vectorizer.fit_transform(df['Contents'])
 
-joblib.dump(vectorizer, currpath / 'DataFiles/vectorizer.joblib')
-joblib.dump(tfidfs, currpath / 'DataFiles/tfidf.joblib')
-
-df.to_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+if not Path((currpath / 'DataFiles/tfidf.joblib')):
+    print("TFIDFs creating")
+    tfidfs = vectorizer.fit_transform(df['Contents'])
+    joblib.dump(tfidfs, currpath / 'DataFiles/tfidf.joblib')
+else:
+    print("TFIDFs File does exist")
