@@ -9,16 +9,11 @@ from pathlib import Path
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
-# from vectorizer_pipeline import tokenize
+from vectorizer_pipeline import tokenize, get_models
 # nltk.download('popular', quiet=True)
 spacy_nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 
-def tokenize(doc):
-    doc_1 = spacy_nlp(doc)
-    no_stop_doc = [
-        token.lemma_ for token in doc_1 if not token.is_stop and not token.is_punct]
-    return no_stop_doc
 currpath = Path(__file__).parent
 
 RESULT_LIMIT = 10
@@ -34,11 +29,7 @@ def initialize_objects():
     global vectorizer,tfidfs ,df ,page_rank ,init_val 
     if init_val == 0:
         print("Initializing as val = 0")
-        vectorizer = joblib.load(currpath / 'DataFiles/vectorizer.joblib')
-        print("Initialized vectorizer")
-        tfidfs = joblib.load(currpath / 'DataFiles/tfidf.joblib')
-        print("Initialized tfidf")
-        df = pd.read_pickle(currpath / 'DataFiles/dataFrame_bk.pkl')
+        df, vectorizer, tfidfs = get_models() 
         print("Initialized content")
         page_rank = pickle.load(open(currpath / 'DataFiles/page_rank.pkl', 'rb'))
         print("Initialized page rank")
