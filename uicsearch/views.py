@@ -24,9 +24,9 @@ class HomeView(TemplateView):
         print("done, reloading")
         self.thread_post_init = 1
         if request.method == 'GET':
-            get(request)
+            self.get(request)
         else:
-            post(request)
+            self.post(request)
 
     def get(self, request):
         print("GET")
