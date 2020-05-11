@@ -1,1 +1,1 @@
-web: gunicorn search_engine.wsgi
+web: python manage.py runserver 0.0.0.0:$PORT
