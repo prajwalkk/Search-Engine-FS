@@ -81,7 +81,7 @@ class HomeView(TemplateView):
                 if (link_list =="None"  
                 or doc_list == "None"  
                 or cossim_list == "None"  
-                or pagerrank_list == "None" 
+                or pagerank_list == "None" 
                 or expanded_queries == "None" ):
                     args = {
                         'form': form,
