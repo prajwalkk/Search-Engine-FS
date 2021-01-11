@@ -100,9 +100,9 @@ python analyse_query.py
 
 This app will not run if the DataFiles are empty. 	
 Following files need to be in DataFiles Dir:
-CrawledData\                  this has all the crawled pages
-Links\  					  this has all the graph data
-dataFrame_bk.pkl  			  this is the dataframe to persist the values
-page_rank.pkl  				  pagerank file
-tfidf.joblib                  TFIDF matrix 
-vectorizer.joblib			  Inverted Index
+|`CrawledData\  ` | this has all the crawled pages |
+|`Links\ `  | this has all the graph data |
+|`dataFrame_bk.pkl  ` | this is the dataframe to persist the values |
+|`page_rank.pkl  ` |  pagerank file |
+|`tfidf.joblib `  |  TFIDF matrix |
+|`vectorizer.joblib` | Inverted Index |
