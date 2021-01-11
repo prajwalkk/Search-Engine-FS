@@ -8,7 +8,7 @@ command:
 	`git clone https://github.com/prajwalkk/SearchEngineFS.git`
 
 ### app deployed online: https://uic-search-pkk.herokuapp.com/
---------------------------------------------------------------------------------------------------------------------------------
+
 
 required python verson 3.7 and above.
 recommended - python3.8
@@ -33,12 +33,14 @@ the python command may differ in your system. It could be python3 or python3.8 o
 		
 2) install virtualenv Create a virtual environment and activate it
 	Windows:
+	
 		```
 		py -m pip install --user virtualenv
 		py -m venv env
 		.\env\Scripts\activate
 		```
 	Linux:
+	
 		```
 		python3 -m pip install --user virtualenv
 		python3 -m venv env
@@ -46,14 +48,19 @@ the python command may differ in your system. It could be python3 or python3.8 o
 		python -m pip install --user --upgrade pip  (this upgraded the pip of the virtualenv)
 		```
 3) Install the required dependencies
+		
 		```pip install wheel
 		pip install -r requirements.txt```
+		
  ** if any wheel error comes, do:
+		
 		```pip install wheel```
 		
 4) place the files in the search_engine folder (the one which contains manage.py) Run
+	
 	```python manage.py runserver```
 	
+
 Wait for sometime until the message says the server is created and press Ctrl+C to exit.
 now go to the address specified in the terminal. normally localhost:8000
 
@@ -64,19 +71,25 @@ To run use, Do not run it in the Crawler folder. Run it in the manage.py folder
 	python Crawler/main.py
 It save the data in DataFiles/Crawled and DataFiles/Links with the current date as the folder.
 
-- PageRanker.py - this does the pagerank computation. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
-- Vectorizer_pipeline.py - does all preprocessing. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
-- analyse_query.py controller component to calculate. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
+- `PageRanker.py` - this does the pagerank computation. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
+- `Vectorizer_pipeline.py` - does all preprocessing. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
+- `analyse_query.py` controller component to calculate. To use the latest file, just open the python file and change the date eg 20200510 to the date on which the crawler was run (everywhere)
 
 
 
 Basic app execution flow:
 1. Crawl using 
 	```python Crawler/main.py```
-2. Change the dates in the PageRanker.py, analyse_query.py, vectorizer_pipeline.py to the latest crawled date  wherever a date exists. Eg 20200510 becomes 20200511 (if run)
+
+2. Change the dates in the `PageRanker.py, analyse_query.py, vectorizer_pipeline.py` to the latest crawled date  wherever a date exists. Eg 20200510 becomes 20200511 (if run)
+
 3. Run the indexer files:
-	```python vectorizer_pipeline.py
-	python analyse_query.py```
+
+	```
+	python vectorizer_pipeline.py
+	python analyse_query.py
+	```
+
 4. Run the app server.
 	```python manage.py runserver```
 5. In brower, open http://127.0.0.1:8000/ (or any other port as specified in the console) 
