@@ -18,23 +18,33 @@ the python command may differ in your system. It could be python3 or python3.8 o
 
 
 1) Upgrade pip
-	Windows powershell: 
-		```py -m pip --version
+	Windows powershell:
+	
+		```
+		py -m pip --version
 		py -m pip install --upgrade pip
 		```
 	Linux and macOS:
-		```python3 -m pip install --user --upgrade pip
-		python3 -m pip --version```
+	
+		```
+		python3 -m pip install --user --upgrade pip
+		python3 -m pip --version
+		```
+		
 2) install virtualenv Create a virtual environment and activate it
 	Windows:
-		```py -m pip install --user virtualenv
+		```
+		py -m pip install --user virtualenv
 		py -m venv env
-		.\env\Scripts\activate```
+		.\env\Scripts\activate
+		```
 	Linux:
-		```python3 -m pip install --user virtualenv
+		```
+		python3 -m pip install --user virtualenv
 		python3 -m venv env
 		source env/bin/activate
-		python -m pip install --user --upgrade pip  (this upgraded the pip of the virtualenv)```
+		python -m pip install --user --upgrade pip  (this upgraded the pip of the virtualenv)
+		```
 3) Install the required dependencies
 		```pip install wheel
 		pip install -r requirements.txt```
