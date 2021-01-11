@@ -20,45 +20,48 @@ the python command may differ in your system. It could be python3 or python3.8 o
 1) Upgrade pip
 	Windows powershell:
 	
-		```
-		py -m pip --version
-		py -m pip install --upgrade pip
-		```
+```
+py -m pip --version
+py -m pip install --upgrade pip
+```
 	Linux and macOS:
 	
-		```
-		python3 -m pip install --user --upgrade pip
-		python3 -m pip --version
-		```
+```
+python3 -m pip install --user --upgrade pip
+python3 -m pip --version
+```
 		
 2) install virtualenv Create a virtual environment and activate it
 	Windows:
 	
-		```
-		py -m pip install --user virtualenv
-		py -m venv env
-		.\env\Scripts\activate
-		```
+```
+py -m pip install --user virtualenv
+py -m venv env
+.\env\Scripts\activate
+```
+	
 	Linux:
 	
-		```
-		python3 -m pip install --user virtualenv
-		python3 -m venv env
-		source env/bin/activate
-		python -m pip install --user --upgrade pip  (this upgraded the pip of the virtualenv)
-		```
+```
+python3 -m pip install --user virtualenv
+python3 -m venv env
+source env/bin/activate
+python -m pip install --user --upgrade pip  (this upgraded the pip of the virtualenv)
+```
+
 3) Install the required dependencies
-		
-		```pip install wheel
-		pip install -r requirements.txt```
+
+```pip install wheel
+pip install -r requirements.txt
+```
 		
  ** if any wheel error comes, do:
 		
-		```pip install wheel```
+```pip install wheel```
 		
 4) place the files in the search_engine folder (the one which contains manage.py) Run
 	
-	```python manage.py runserver```
+```python manage.py runserver```
 	
 
 Wait for sometime until the message says the server is created and press Ctrl+C to exit.
@@ -79,19 +82,19 @@ It save the data in DataFiles/Crawled and DataFiles/Links with the current date 
 
 Basic app execution flow:
 1. Crawl using 
-	```python Crawler/main.py```
+```python Crawler/main.py```
 
 2. Change the dates in the `PageRanker.py, analyse_query.py, vectorizer_pipeline.py` to the latest crawled date  wherever a date exists. Eg 20200510 becomes 20200511 (if run)
 
 3. Run the indexer files:
 
-	```
-	python vectorizer_pipeline.py
-	python analyse_query.py
-	```
+```
+python vectorizer_pipeline.py
+python analyse_query.py
+```
 
 4. Run the app server.
-	```python manage.py runserver```
+```python manage.py runserver```
 5. In brower, open http://127.0.0.1:8000/ (or any other port as specified in the console) 
 6. Profit
 
