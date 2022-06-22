@@ -11,7 +11,7 @@ scipy==1.4.1
 seaborn==0.10.0
 spacy==2.2.4
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.5/en_core_web_sm-2.2.5.tar.gz#egg=en_core_web_sm
-numpy==1.18.3
+numpy==1.22.0
 regex==2020.4.4
 requests==2.23.0
 beautifulsoup4==4.8.2
